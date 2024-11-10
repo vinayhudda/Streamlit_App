@@ -28,6 +28,6 @@ jobs:
         run : pip install -r requirements.txt
 
       - name: Build with Python
-        run: streamlit run --help
+        run: streamlit run myapp.py
       
 
