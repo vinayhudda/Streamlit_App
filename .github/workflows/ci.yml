@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -25,5 +26,5 @@ jobs:
 
       - name : Install Dependencies
         run : pip install -r requirements.txt
-      - working-directory: ./app
+      
 
