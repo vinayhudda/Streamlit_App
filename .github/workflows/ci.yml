@@ -27,10 +27,15 @@ jobs:
       - name : Install Dependencies
         run : pip install -r requirements.txt
 
-      - name: Build with Python
-        run: streamlit run myapp.py
+      #- name: Build with Python
+       # run: streamlit run myapp.py
+      - name: Build and Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v4
+        with:
+          image: vhudda/streamlitapp3
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
       
 
