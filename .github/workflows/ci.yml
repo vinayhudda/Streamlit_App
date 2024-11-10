@@ -30,8 +30,7 @@ jobs:
       - name: Build with Python
         run: streamlit run myapp.py
 
-      - name: Cancel Streamlit app
-        run: |
-          pkill -9 streamlit  # Send signal to terminate Streamlit process
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
       
 
