@@ -1,28 +1,23 @@
-name: Python CI with Streamlit
+name: Streamlit app
+
 on:
   push:
-    branches:
-      - master
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
 jobs:
-  build:
+  streamlit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python 3.13
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-      - name: Install Dependencies  
-        run: pip install -r requirements.txt
-      - name: Build with Python
-        run: streamlit run myapp.py
-      - name: Build and Push Docker Image
-        uses: mr-smithers-excellent/docker-build-push@v4
+          python-version: '3.11'
+      - uses: streamlit/streamlit-app-action@v0.0.3
         with:
-          image: vhudda/streamlitapp3
-          registry: docker.io
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          app-path: streamlit_app.py
+          ruff: true
