@@ -18,7 +18,7 @@ jobs:
       - name: Install Dependencies  
         run: pip install -r requirements.txt
       - name: Build with Python
-        run: python myapp.py
+        run: streamlit run myapp.py
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
